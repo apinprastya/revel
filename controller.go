@@ -403,3 +403,25 @@ func RegisterController(c interface{}, methods []*MethodType) {
 	}
 	TRACE.Printf("Registered controller: %s", elem.Name())
 }
+
+//APIN additional code
+func (c *Controller) IsJsonBody() bool {
+	if h, ok := c.Request.Header["Content-Type"]; ok {
+		for _, v := range h {
+			if strings.Contains(v, "application/json") {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+func (c *Controller) FormExtract(out map[string]interface{}) {
+	for k, v := range c.Request.PostForm {
+		if len(v) > 1 {
+			out[k] = v
+		} else {
+			out[k] = v[0]
+		}
+	}
+}
