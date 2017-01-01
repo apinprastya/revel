@@ -31,6 +31,8 @@ type Controller struct {
 	Args       map[string]interface{} // Per-request scratch space.
 	RenderArgs map[string]interface{} // Args passed to the template.
 	Validation *Validation            // Data validation helpers
+	JsonRawMap JsonRawMap			  // Data request in json
+	AuthData   interface{}			  // User auth data
 }
 
 func NewController(req *Request, resp *Response) *Controller {
