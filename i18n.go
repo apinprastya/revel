@@ -7,7 +7,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/revel/config"
+	"github.com/apinprastya/config"
 )
 
 const (

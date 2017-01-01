@@ -16,7 +16,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/revel/revel"
+	"github.com/apinprastya/revel"
 
 	"golang.org/x/net/websocket"
 )

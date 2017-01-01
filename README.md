@@ -12,7 +12,7 @@ Current Version: 0.13.1 (2016-06-06)
 
 Install revel framework:
 
-	go get -u github.com/revel/cmd/revel
+	go get -u github.com/apinprastya/cmd/revel
 
 Create a new app and run it:
 
@@ -24,21 +24,21 @@ Open http://localhost:9000 in your browser and you should see "It works!"
 ## Learn More
 
 * [Manual, Samples, Godocs, etc](http://revel.github.io)
-* [Apps using Revel](https://github.com/revel/revel/wiki/Apps-in-the-Wild)
-* [Articles Featuring Revel](https://github.com/revel/revel/wiki/Articles)
+* [Apps using Revel](https://github.com/apinprastya/revel/wiki/Apps-in-the-Wild)
+* [Articles Featuring Revel](https://github.com/apinprastya/revel/wiki/Articles)
 
 ## Contributing
 
-* [Contributing Code Guidelines](https://github.com/revel/revel/blob/master/CONTRIBUTING.md)
-* [Revel Contributors](https://github.com/revel/revel/graphs/contributors)
+* [Contributing Code Guidelines](https://github.com/apinprastya/revel/blob/master/CONTRIBUTING.md)
+* [Revel Contributors](https://github.com/apinprastya/revel/graphs/contributors)
 
 ## Community
 
 Join on [StackOverflow](http://stackoverflow.com/questions/tagged/revel), [IRC #revel](http://webchat.freenode.net/?channels=%23revel&uio=d4) and [Google Groups](https://groups.google.com/forum/#!forum/revel-framework)
 
-* Report bugs [here](https://github.com/revel/revel/issues)
+* Report bugs [here](https://github.com/apinprastya/revel/issues)
 * Answer questions of other community members (via [StackOverflow](http://stackoverflow.com/questions/tagged/revel), [Google Groups](https://groups.google.com/forum/#!forum/revel-framework) and [IRC](http://webchat.freenode.net/?channels=%23revel&uio=d4))
-* Give feedback on new feature discussions (via [GitHub Issues](https://github.com/revel/revel/issues) and [Google Groups](https://groups.google.com/forum/#!forum/revel-framework))
+* Give feedback on new feature discussions (via [GitHub Issues](https://github.com/apinprastya/revel/issues) and [Google Groups](https://groups.google.com/forum/#!forum/revel-framework))
 * Propose your own ideas via [Google Groups](https://groups.google.com/forum/#!forum/revel-framework)
 
 
@@ -58,7 +58,7 @@ Finally, we'd like to thank the professional organizations that have supported t
 
 ## Announcements
 
-View the [v0.13.0 release notes](https://github.com/revel/revel/releases/tag/v0.13.0)
+View the [v0.13.0 release notes](https://github.com/apinprastya/revel/releases/tag/v0.13.0)
 for all of the relevant changes.
 
 We are working on increasing the speed and quality of our releases. Your feedback has never been so valuable, please share your thoughts with us and help shape Revel!
