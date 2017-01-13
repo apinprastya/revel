@@ -147,7 +147,7 @@ func Init(mode, importPath, srcPath string) {
 	ViewsPath = filepath.Join(AppPath, "views")
 
 	CodePaths = []string{AppPath, filepath.Join(BasePath, "models"), filepath.Join(BasePath, "common"),
-                    filepath.Join(BasePath, "migration")}
+                    filepath.Join(BasePath, "migrations")}
 
 	if ConfPaths == nil {
 		ConfPaths = []string{}
