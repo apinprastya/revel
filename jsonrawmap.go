@@ -13,7 +13,8 @@ func (this JsonRawMap) FixInt64(keys ...string) {
         for _, v := range(keys) {
             if v1, k := this[v]; k && v1 != nil {
                 if reflect.TypeOf(this[v]).Kind() != reflect.Float64 {
-                    panic(errors.New("Keys does not Float, please check"))
+                    this[v] = 0
+                    continue
                 }
                 this[v] = int64(this[v].(float64))
             }
@@ -26,7 +27,8 @@ func (this JsonRawMap) FixInt(keys ...string) {
         for _, v := range(keys) {
             if v1, k := this[v]; k && v1 != nil {
                 if reflect.TypeOf(this[v]).Kind() != reflect.Float64 {
-                    panic(errors.New("Keys does not Float, please check"))
+                    this[v] = 0
+                    continue
                 }
                 this[v] = int(this[v].(float64))
             }
