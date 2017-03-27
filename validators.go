@@ -47,6 +47,40 @@ func (r Required) DefaultMessage() string {
 	return "Required"
 }
 
+type NonEmpty struct{}
+
+func ValidNonEmpty() Required {
+	return Required{}
+}
+
+func (r NonEmpty) IsSatisfied(obj interface{}) bool {
+	if obj == nil {
+		return true
+	}
+
+	if str, ok := obj.(string); ok {
+		return utf8.RuneCountInString(str) > 0
+	}
+	if b, ok := obj.(bool); ok {
+		return b
+	}
+	if i, ok := obj.(int); ok {
+		return i != 0
+	}
+	if t, ok := obj.(time.Time); ok {
+		return !t.IsZero()
+	}
+	v := reflect.ValueOf(obj)
+	if v.Kind() == reflect.Slice {
+		return v.Len() > 0
+	}
+	return true
+}
+
+func (r NonEmpty) DefaultMessage() string {
+	return "No empty value"
+}
+
 type Min struct {
 	Min int
 }

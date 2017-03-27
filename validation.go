@@ -103,6 +103,10 @@ func (v *Validation) Required(obj interface{}) *ValidationResult {
 	return v.apply(Required{}, obj)
 }
 
+func (v *Validation) NonEmpty(obj interface{}) *ValidationResult {
+	return v.apply(NonEmpty{}, obj)
+}
+
 func (v *Validation) Min(n int, min int) *ValidationResult {
 	return v.apply(Min{min}, n)
 }
