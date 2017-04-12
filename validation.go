@@ -107,6 +107,10 @@ func (v *Validation) NonEmpty(obj interface{}) *ValidationResult {
 	return v.apply(NonEmpty{}, obj)
 }
 
+func (v *Validation) ValidBsonId(obj interface{}) *ValidationResult {
+	return v.apply(BsonId{}, obj)
+}
+
 func (v *Validation) Min(n int, min int) *ValidationResult {
 	return v.apply(Min{min}, n)
 }

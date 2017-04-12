@@ -1,6 +1,7 @@
 package revel
 
 import (
+	"encoding/hex"
 	"fmt"
 	"reflect"
 	"regexp"
@@ -49,8 +50,8 @@ func (r Required) DefaultMessage() string {
 
 type NonEmpty struct{}
 
-func ValidNonEmpty() Required {
-	return Required{}
+func ValidNonEmpty() NonEmpty {
+	return NonEmpty{}
 }
 
 func (r NonEmpty) IsSatisfied(obj interface{}) bool {
@@ -241,4 +242,25 @@ func ValidEmail() Email {
 
 func (e Email) DefaultMessage() string {
 	return fmt.Sprintln("Must be a valid email address")
+}
+
+type BsonId struct{}
+
+func ValidBsonId() BsonId {
+	return BsonId{}
+}
+
+func (r BsonId) IsSatisfied(obj interface{}) bool {
+	if s, ok := obj.(string); ok {
+		if len(s) != 24 {
+			return false
+		}
+		_, err := hex.DecodeString(s)
+		return err == nil
+	}
+	return false
+}
+
+func (r BsonId) DefaultMessage() string {
+	return "Not bson id"
 }
