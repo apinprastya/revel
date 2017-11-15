@@ -116,6 +116,19 @@ func (this JsonRawMap) GetInt64(key string) int64 {
 	return 0
 }
 
+func (this JsonRawMap) GetInt(key string) int {
+	return int(this.GetInt64(key))
+}
+
+func (this JsonRawMap) GetArray(key string) []interface{} {
+	if val, ok := this[key]; ok {
+		if reflect.TypeOf(val).Kind() == reflect.Slice || reflect.TypeOf(val).Kind() == reflect.Array {
+			return this[key].([]interface{})
+		}
+	}
+	return nil
+}
+
 func formatDate(val string) string {
 	t, _ := time.Parse("2006-01-02", val)
 	return t.Format(time.RFC3339)
