@@ -9,6 +9,9 @@ import (
 
 type JsonRawMap map[string]interface{}
 
+var convertUTC = false
+var timeLocation *time.Location
+
 func (this JsonRawMap) FixInt64(keys ...string) {
 	if len(keys) > 0 {
 		for _, v := range keys {
@@ -130,11 +133,42 @@ func (this JsonRawMap) GetArray(key string) []interface{} {
 }
 
 func formatDate(val string) string {
-	t, _ := time.Parse("2006-01-02", val)
+	var t time.Time
+	if timeLocation == nil {
+		t, _ = time.Parse("2006-01-02", val)
+	} else {
+		t, _ = time.ParseInLocation("2006-01-02", val, timeLocation)
+		if convertUTC {
+			t = t.UTC()
+		}
+	}
 	return t.Format(time.RFC3339)
 }
 
 func formatDateTime(val string) string {
-	t, _ := time.Parse("2006-01-02 15:04:05", val)
+	var t time.Time
+	var err error
+	if timeLocation == nil {
+		t, err = time.Parse("2006-01-02 15:04:05", val)
+		if err != nil {
+			t, _ = time.Parse("2006-01-02 15:04", val)
+		}
+	} else {
+		t, err = time.ParseInLocation("2006-01-02 15:04:05", val, timeLocation)
+		if err != nil {
+			t, _ = time.ParseInLocation("2006-01-02 15:04", val, timeLocation)
+		}
+	}
+	if convertUTC {
+		t = t.UTC()
+	}
 	return t.Format(time.RFC3339)
+}
+
+func SetDateToUTC(val bool) {
+	convertUTC = val
+}
+
+func SetTimeLocation(loc *time.Location) {
+	timeLocation = loc
 }
