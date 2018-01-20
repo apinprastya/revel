@@ -2,6 +2,7 @@ package revel
 
 import (
 	"errors"
+	"github.com/jinzhu/now"
 	"reflect"
 	"strconv"
 	"time"
@@ -138,6 +139,7 @@ func formatDate(val string) string {
 		t, _ = time.Parse("2006-01-02", val)
 	} else {
 		t, _ = time.ParseInLocation("2006-01-02", val, timeLocation)
+		t = now.New(t).EndOfDay()
 		if convertUTC {
 			t = t.UTC()
 		}
