@@ -133,6 +133,25 @@ func (this JsonRawMap) GetArray(key string) []interface{} {
 	return nil
 }
 
+func (this JsonRawMap) Keep(keys ...string) {
+	remove := []string{}
+	if len(keys) > 0 {
+		for k, _ := range this {
+			found := false
+			for _, v := range keys {
+				if k == v {
+					found = true
+					break
+				}
+			}
+			if !found {
+				remove = append(remove, k)
+			}
+		}
+	}
+	this.RemoveField(remove...)
+}
+
 func formatDate(val string) string {
 	var t time.Time
 	if timeLocation == nil {
